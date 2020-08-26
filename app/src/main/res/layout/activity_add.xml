@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/text_manufacturer"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editText_model"
@@ -18,6 +19,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/text_model"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
 
 </LinearLayout>
