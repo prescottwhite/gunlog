@@ -16,4 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         startActivity(intent)
     }
+
+    fun viewGuns(view: View) {
+        val intent = Intent(this, ViewActivity::class.java)
+
+        startActivity(intent)
+    }
 }
