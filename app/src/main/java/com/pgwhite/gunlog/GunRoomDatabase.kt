@@ -61,12 +61,10 @@ public abstract class GunRoomDatabase : RoomDatabase() {
             //gunDao.deleteAll()
 
             // Add sample words.
-            var gun = Gun(1, "Glock", "19")
-            gunDao.insert(gun)
-            gun = Gun(2, "Remington", "870")
-            gunDao.insert(gun)
-
-            // TODO: Add your own guns!
+//            var gun = Gun(0, "Glock", "19")
+//            gunDao.insert(gun)
+//            gun = Gun(0, "Remington", "870")
+//            gunDao.insert(gun)
         }
     }
 }
