@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Gun Log</string>
+
+    <string name="button_view_title">View Guns</string>
+    <string name="button_add_title">Add New Gun</string>
+    <string name="title_activity_add">New Gun</string>
+
+    // add new gun
+    <string name="text_manufacturer">Manufacturer</string>
+    <string name="text_model">Model</string>
+    <string name="text_type_gun">Type</string>
+    <string name="text_recoil_spring_lifespan">Recoil Spring Lifespan</string>
+</resources>
