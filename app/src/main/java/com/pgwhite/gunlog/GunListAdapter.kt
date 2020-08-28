@@ -15,7 +15,7 @@ class GunListAdapter internal constructor(
     private var guns = emptyList<Gun>() // Cached copy of guns
 
     inner class GunViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val gunItemView: TextView = itemView.findViewById(R.id.textView)
+        val gunItemView: TextView = itemView.findViewById(R.id.textView_manufacturer)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GunViewHolder {

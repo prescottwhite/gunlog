@@ -1,6 +1,7 @@
 package com.pgwhite.gunlog
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -10,11 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 class ViewActivity : AppCompatActivity() {
     private lateinit var gunViewModel: GunViewModel
 
+    private lateinit var recyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         val adapter = GunListAdapter(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -22,8 +25,28 @@ class ViewActivity : AppCompatActivity() {
         gunViewModel = ViewModelProvider(this).get(GunViewModel::class.java)
 
         gunViewModel.allGuns.observe(this, Observer { guns ->
-            // Update the cached copy of the words in the adapter.
+            // Update the cached copy of the guns in the adapter.
             guns?.let { adapter.setGuns(it) }
         })
+
+// 1
+        if (savedInstanceState == null) {
+            // 2
+            supportFragmentManager
+                // 3
+                .beginTransaction()
+                // 4
+                .add(R.id.constraint_layout, ViewGunFragment.newInstance("Mfr", "Model"), "gunFragment")
+                // 5
+                .commit()
+        }
+    }
+
+    fun openGunEntry(view : View) {
+        val position = recyclerView.getChildAdapterPosition(view)
+
+//        val intent = Intent(this@ViewActivity, ViewGunActivity::class.java)
+//        intent.putExtra("gunPosExtra", position)
+//        startActivity(intent)
     }
 }
