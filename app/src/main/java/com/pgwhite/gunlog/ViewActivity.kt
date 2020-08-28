@@ -1,7 +1,6 @@
 package com.pgwhite.gunlog
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -29,11 +28,6 @@ class ViewActivity : AppCompatActivity() {
             // Update the cached copy of the guns in the adapter.
             guns?.let { adapter.setGuns(it) }
         })
-
-        val gunItem = findViewById<RecyclerView>(R.id.recyclerView)
-        gunItem.setOnClickListener() {
-            Log.d("TAG", "It worked")
-        }
 // 1
 //        if (savedInstanceState == null) {
 //            // 2
@@ -49,10 +43,13 @@ class ViewActivity : AppCompatActivity() {
 
     fun openGunEntry(view : View) {
         val position = recyclerView.getChildAdapterPosition(view)
+        val mfrString = gunViewModel.allGuns.value?.get(position)?.mfr!!
+        val modelString = gunViewModel.allGuns.value?.get(position)?.model!!
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.constraint_layout, ViewGunFragment.newInstance("Mfr", "Model"),"gunFragment")
+            .add(R.id.constraint_layout, ViewGunFragment.newInstance(mfrString, modelString),"gunFragment")
+            .addToBackStack("gunFragment")
             .commit()
 
 //        val intent = Intent(this@ViewActivity, ViewGunActivity::class.java)

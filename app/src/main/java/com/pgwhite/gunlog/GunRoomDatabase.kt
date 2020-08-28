@@ -57,14 +57,14 @@ public abstract class GunRoomDatabase : RoomDatabase() {
         }
 
         suspend fun populateDatabase(gunDao: GunDAO) {
-            // Delete all content here.
-            gunDao.deleteAll()
-
-            // Add sample words.
-            var gun = Gun(0, "Glock", "19")
-            gunDao.insert(gun)
-            gun = Gun(0, "Remington", "870")
-            gunDao.insert(gun)
+//            // Delete all content here.
+//            gunDao.deleteAll()
+//
+//            // Add sample words.
+//            var gun = Gun(0, "Glock", "19")
+//            gunDao.insert(gun)
+//            gun = Gun(0, "Remington", "870")
+//            gunDao.insert(gun)
         }
     }
 }
