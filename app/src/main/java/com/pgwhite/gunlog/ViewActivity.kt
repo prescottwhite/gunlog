@@ -1,6 +1,7 @@
 package com.pgwhite.gunlog
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -17,7 +18,7 @@ class ViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view)
 
-        recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = GunListAdapter(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -29,21 +30,30 @@ class ViewActivity : AppCompatActivity() {
             guns?.let { adapter.setGuns(it) }
         })
 
-// 1
-        if (savedInstanceState == null) {
-            // 2
-            supportFragmentManager
-                // 3
-                .beginTransaction()
-                // 4
-                .add(R.id.constraint_layout, ViewGunFragment.newInstance("Mfr", "Model"), "gunFragment")
-                // 5
-                .commit()
+        val gunItem = findViewById<RecyclerView>(R.id.recyclerView)
+        gunItem.setOnClickListener() {
+            Log.d("TAG", "It worked")
         }
+// 1
+//        if (savedInstanceState == null) {
+//            // 2
+//            supportFragmentManager
+//                // 3
+//                .beginTransaction()
+//                // 4
+//                .add(R.id.constraint_layout, ViewGunFragment.newInstance("Mfr", "Model"), "gunFragment")
+//                // 5
+//                .commit()
+//        }
     }
 
     fun openGunEntry(view : View) {
         val position = recyclerView.getChildAdapterPosition(view)
+
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.constraint_layout, ViewGunFragment.newInstance("Mfr", "Model"),"gunFragment")
+            .commit()
 
 //        val intent = Intent(this@ViewActivity, ViewGunActivity::class.java)
 //        intent.putExtra("gunPosExtra", position)
