@@ -8,12 +8,17 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView_frag_mfr"
+        android:id="@+id/textViewFragMfr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/textView_frag_model"
+        android:id="@+id/textViewFragModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textViewFragTotalRounds"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

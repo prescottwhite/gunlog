@@ -10,6 +10,7 @@ class AddActivity : AppCompatActivity() {
 
     private lateinit var editMfrView: EditText
     private lateinit var editModelView: EditText
+    private lateinit var editTotalRoundsView: EditText
 
     private lateinit var gunViewModel: GunViewModel
 
@@ -17,14 +18,15 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
 
-        editMfrView = findViewById(R.id.editText_manufacturer)
-        editModelView = findViewById(R.id.editText_model)
+        editMfrView = findViewById(R.id.editTextManufacturer)
+        editModelView = findViewById(R.id.editTextModel)
+        editTotalRoundsView = findViewById(R.id.editTextTotalRounds)
 
         gunViewModel = ViewModelProvider(this).get(GunViewModel::class.java)
 
         val button = findViewById<Button>(R.id.button_save)
         button.setOnClickListener {
-            val gun = Gun(0, editMfrView.text.toString(), editModelView.text.toString())
+            val gun = Gun(0, editMfrView.text.toString(), editModelView.text.toString(), editTotalRoundsView.text.toString().toInt())
             gunViewModel.insert(gun)
             finish()
         }

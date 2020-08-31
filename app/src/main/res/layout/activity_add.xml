@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editText_manufacturer"
+        android:id="@+id/editTextManufacturer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -14,12 +14,21 @@
         android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/editText_model"
+        android:id="@+id/editTextModel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/text_model"
         android:inputType="textPersonName"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/editTextTotalRounds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/text_total_rounds"
+        android:inputType="number"
         android:importantForAutofill="no" />
 
     <Button

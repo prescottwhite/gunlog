@@ -51,20 +51,20 @@ public abstract class GunRoomDatabase : RoomDatabase() {
             super.onOpen(db)
             INSTANCE?.let { database ->
                 scope.launch {
-                    populateDatabase(database.gunDAO())
+                    //populateDatabase(database.gunDAO())
                 }
             }
         }
 
         suspend fun populateDatabase(gunDao: GunDAO) {
 //            // Delete all content here.
-//            gunDao.deleteAll()
-//
-//            // Add sample words.
-//            var gun = Gun(0, "Glock", "19")
-//            gunDao.insert(gun)
-//            gun = Gun(0, "Remington", "870")
-//            gunDao.insert(gun)
+            gunDao.deleteAll()
+
+            // Add sample words.
+            var gun = Gun(0, "Glock", "19", 2000)
+            gunDao.insert(gun)
+            gun = Gun(0, "Remington", "870", 1000)
+            gunDao.insert(gun)
         }
     }
 }

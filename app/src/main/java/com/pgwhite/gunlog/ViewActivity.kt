@@ -45,10 +45,11 @@ class ViewActivity : AppCompatActivity() {
         val position = recyclerView.getChildAdapterPosition(view)
         val mfrString = gunViewModel.allGuns.value?.get(position)?.mfr!!
         val modelString = gunViewModel.allGuns.value?.get(position)?.model!!
+        val roundsInt = gunViewModel.allGuns.value?.get(position)?.rounds_total!!
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.constraint_layout, ViewGunFragment.newInstance(mfrString, modelString),"gunFragment")
+            .add(R.id.constraint_layout, ViewGunFragment.newInstance(mfrString, modelString, roundsInt),"gunFragment")
             .addToBackStack("gunFragment")
             .commit()
 
