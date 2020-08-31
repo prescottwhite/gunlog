@@ -28,17 +28,6 @@ class ViewActivity : AppCompatActivity() {
             // Update the cached copy of the guns in the adapter.
             guns?.let { adapter.setGuns(it) }
         })
-// 1
-//        if (savedInstanceState == null) {
-//            // 2
-//            supportFragmentManager
-//                // 3
-//                .beginTransaction()
-//                // 4
-//                .add(R.id.constraint_layout, ViewGunFragment.newInstance("Mfr", "Model"), "gunFragment")
-//                // 5
-//                .commit()
-//        }
     }
 
     fun openGunEntry(view : View) {
@@ -52,9 +41,5 @@ class ViewActivity : AppCompatActivity() {
             .add(R.id.constraint_layout, ViewGunFragment.newInstance(mfrString, modelString, roundsInt),"gunFragment")
             .addToBackStack("gunFragment")
             .commit()
-
-//        val intent = Intent(this@ViewActivity, ViewGunActivity::class.java)
-//        intent.putExtra("gunPosExtra", position)
-//        startActivity(intent)
     }
 }

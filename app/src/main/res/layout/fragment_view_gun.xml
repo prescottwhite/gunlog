@@ -10,24 +10,29 @@
     <TextView
         android:id="@+id/textViewFragMfr"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textViewFragModel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textViewFragTotalRounds"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FF4D4D"
-        android:text="@string/button_delete" />
+        android:text="@string/button_delete"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/button_fragment"
