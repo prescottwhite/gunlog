@@ -1,7 +1,10 @@
 package com.pgwhite.gunlog
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 
 @Dao
 interface GunDAO {
@@ -10,12 +13,6 @@ interface GunDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(gun: Gun)
-
-    @Update(onConflict = OnConflictStrategy.ABORT)
-    suspend fun update(key: PrimaryKey)
-
-    @Delete
-    suspend fun delete(key: PrimaryKey)
 
     @Query("DELETE FROM gun_table")
     suspend fun deleteAll()
