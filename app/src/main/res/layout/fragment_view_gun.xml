@@ -26,7 +26,7 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_delete_gun"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,8 +35,10 @@
         android:textSize="12sp" />
 
     <Button
-        android:id="@+id/button_fragment"
+        android:id="@+id/button_close_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_close" />
+        android:text="@string/button_close"
+        android:textSize="24sp" />
+
 </LinearLayout>

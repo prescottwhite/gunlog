@@ -12,4 +12,8 @@ class GunRepository(private val gunDAO: GunDAO) {
     suspend fun insert(gun: Gun) {
         gunDAO.insert(gun)
     }
+
+    suspend fun delete(gun: Gun) {
+        gunDAO.delete(gun)
+    }
 }

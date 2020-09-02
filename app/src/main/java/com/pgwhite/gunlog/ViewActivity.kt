@@ -38,8 +38,10 @@ class ViewActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.constraint_layout, ViewGunFragment.newInstance(mfrString, modelString, roundsInt),"gunFragment")
+            .add(R.id.constraint_layout, ViewGunFragment.newInstance(position, mfrString, modelString, roundsInt),"gunFragment")
             .addToBackStack("gunFragment")
             .commit()
     }
+
+    fun getViewModelInstance():GunViewModel = gunViewModel
 }

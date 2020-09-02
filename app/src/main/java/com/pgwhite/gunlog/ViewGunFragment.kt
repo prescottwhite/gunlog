@@ -9,9 +9,10 @@ import kotlinx.android.synthetic.main.fragment_view_gun.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-private const val ARG_PARAM3 = "param3"
+private const val ARG_POS = "param1"
+private const val ARG_MFR = "param2"
+private const val ARG_MODEL = "param3"
+private const val ARG_TOTAL_ROUNDS = "param4"
 
 /**
  * A simple [Fragment] subclass.
@@ -19,6 +20,11 @@ private const val ARG_PARAM3 = "param3"
  * create an instance of this fragment.
  */
 class ViewGunFragment : Fragment() {
+    private lateinit var gunViewModel: GunViewModel
+
+    private var gun: Gun? = null
+
+    private var pos: Int? = null
     private var mfr: String? = null
     private var model: String? = null
     private var totalRounds: Int? = null
@@ -26,10 +32,15 @@ class ViewGunFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            mfr = it.getString(ARG_PARAM1)
-            model = it.getString(ARG_PARAM2)
-            totalRounds = it.getInt(ARG_PARAM3)
+            pos = it.getInt(ARG_POS)
+            mfr = it.getString(ARG_MFR)
+            model = it.getString(ARG_MODEL)
+            totalRounds = it.getInt(ARG_TOTAL_ROUNDS)
         }
+
+        gunViewModel = (activity as ViewActivity).getViewModelInstance()
+
+        gun = gunViewModel.allGuns.value?.get(pos!!)
     }
 
     override fun onCreateView(
@@ -47,7 +58,12 @@ class ViewGunFragment : Fragment() {
         textViewFragModel.text = this.model
         textViewFragTotalRounds.text = this.totalRounds.toString()
 
-        button_fragment.setOnClickListener {
+        button_close_fragment.setOnClickListener {
+            activity?.onBackPressed()
+        }
+
+        button_delete_gun.setOnClickListener {
+            gunViewModel.delete(gun!!)
             activity?.onBackPressed()
         }
     }
@@ -57,23 +73,20 @@ class ViewGunFragment : Fragment() {
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
+         * @param mfr Parameter 1.
+         * @param model Parameter 2.
          * @return A new instance of fragment ViewGunFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String, param3: Int) =
+        fun newInstance(pos: Int, mfr: String, model: String, totalRounds: Int) =
             ViewGunFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                    putInt(ARG_PARAM3, param3)
+                    putInt(ARG_POS, pos)
+                    putString(ARG_MFR, mfr)
+                    putString(ARG_MODEL, model)
+                    putInt(ARG_TOTAL_ROUNDS, totalRounds)
                 }
             }
-    }
-
-    fun closeGunFragment(view: View) {
-
     }
 }
