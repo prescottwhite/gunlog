@@ -38,7 +38,7 @@ class ViewActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.constraint_layout, ViewGunFragment.newInstance(position, mfrString, modelString, roundsInt),"gunFragment")
+            .add(R.id.constraintLayout, ViewGunFragment.newInstance(position, mfrString, modelString, roundsInt),"gunFragment")
             .addToBackStack("gunFragment")
             .commit()
     }

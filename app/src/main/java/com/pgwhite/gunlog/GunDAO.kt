@@ -11,6 +11,9 @@ interface GunDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(gun: Gun)
 
+    @Update
+    suspend fun update(gun: Gun)
+
     @Delete
     fun delete(gun: Gun)
 

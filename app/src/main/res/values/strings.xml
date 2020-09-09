@@ -18,5 +18,9 @@
     <string name="button_save_title">Save</string>
     <string name="button_delete">Delete</string>
     <string name="button_close">Close</string>
+    <string name="button_update_rounds">Update</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_hint_update_rounds"># rounds fired?</string>
 
 </resources>

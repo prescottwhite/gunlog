@@ -22,7 +22,7 @@ private const val ARG_TOTAL_ROUNDS = "param4"
 class ViewGunFragment : Fragment() {
     private lateinit var gunViewModel: GunViewModel
 
-    private var gun: Gun? = null
+    private var currentGun: Gun? = null
 
     private var pos: Int? = null
     private var mfr: String? = null
@@ -40,7 +40,7 @@ class ViewGunFragment : Fragment() {
 
         gunViewModel = (activity as ViewActivity).getViewModelInstance()
 
-        gun = gunViewModel.allGuns.value?.get(pos!!)
+        currentGun = gunViewModel.allGuns.value?.get(pos!!)
     }
 
     override fun onCreateView(
@@ -58,12 +58,31 @@ class ViewGunFragment : Fragment() {
         textViewFragModel.text = this.model
         textViewFragTotalRounds.text = this.totalRounds.toString()
 
-        button_close_fragment.setOnClickListener {
+        buttonCloseFragment.setOnClickListener {
             activity?.onBackPressed()
         }
 
-        button_delete_gun.setOnClickListener {
-            gunViewModel.delete(gun!!)
+        buttonUpdateRounds.setOnClickListener {
+            try {
+                var newRoundCount: Int = editTextNewRoundCount.text.toString().toInt()
+                if (newRoundCount > 0) {
+                    val updateGun = Gun(currentGun!!.id, currentGun!!.mfr, currentGun!!.model, currentGun!!.rounds_total + newRoundCount)
+                    gunViewModel.update(updateGun)
+                    currentGun = updateGun
+
+                    editTextNewRoundCount.text = null
+
+                    textViewFragMfr.text = currentGun!!.mfr
+                    textViewFragModel.text = currentGun!!.model
+                    textViewFragTotalRounds.text = currentGun!!.rounds_total.toString()
+                }
+            } catch (e: Exception) {
+                editTextNewRoundCount.text = null
+            }
+        }
+
+        buttonDeleteGun.setOnClickListener {
+            gunViewModel.delete(currentGun!!)
             activity?.onBackPressed()
         }
     }

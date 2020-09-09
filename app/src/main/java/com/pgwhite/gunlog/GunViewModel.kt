@@ -28,6 +28,10 @@ class GunViewModel(application: Application) : AndroidViewModel(application) {
         repository.insert(gun)
     }
 
+    fun update(gun: Gun) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update(gun)
+    }
+
     fun delete(gun: Gun) = viewModelScope.launch(Dispatchers.IO) {
         repository.delete(gun)
     }

@@ -24,7 +24,7 @@ class AddActivity : AppCompatActivity() {
 
         gunViewModel = ViewModelProvider(this).get(GunViewModel::class.java)
 
-        val button = findViewById<Button>(R.id.button_save)
+        val button = findViewById<Button>(R.id.buttonSave)
         button.setOnClickListener {
             val gun = Gun(0, editMfrView.text.toString(), editModelView.text.toString(), editTotalRoundsView.text.toString().toInt())
             gunViewModel.insert(gun)
