@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/text_manufacturer"
-        android:inputType="textPersonName"
-        android:importantForAutofill="no" />
+        android:importantForAutofill="no"
+        android:inputType="textCapWords" />
 
     <EditText
         android:id="@+id/editTextModel"
@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/text_model"
-        android:inputType="textPersonName"
-        android:importantForAutofill="no" />
+        android:importantForAutofill="no"
+        android:inputType="textCapWords" />
 
     <EditText
         android:id="@+id/editTextTotalRounds"
