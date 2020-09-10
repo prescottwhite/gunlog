@@ -1,9 +1,11 @@
 package com.pgwhite.gunlog
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_view_gun.*
 
@@ -59,6 +61,7 @@ class ViewGunFragment : Fragment() {
         textViewFragTotalRounds.text = this.totalRounds.toString()
 
         buttonCloseFragment.setOnClickListener {
+            it.hideKeyboard()
             activity?.onBackPressed()
         }
 
@@ -70,12 +73,12 @@ class ViewGunFragment : Fragment() {
                     gunViewModel.update(updateGun)
                     currentGun = updateGun
 
-                    editTextNewRoundCount.text = null
-
                     textViewFragMfr.text = currentGun!!.mfr
                     textViewFragModel.text = currentGun!!.model
                     textViewFragTotalRounds.text = currentGun!!.rounds_total.toString()
                 }
+                editTextNewRoundCount.text = null
+                it.hideKeyboard()
             } catch (e: Exception) {
                 editTextNewRoundCount.text = null
             }
@@ -83,6 +86,7 @@ class ViewGunFragment : Fragment() {
 
         buttonDeleteGun.setOnClickListener {
             gunViewModel.delete(currentGun!!)
+            it.hideKeyboard()
             activity?.onBackPressed()
         }
     }
@@ -107,5 +111,10 @@ class ViewGunFragment : Fragment() {
                     putInt(ARG_TOTAL_ROUNDS, totalRounds)
                 }
             }
+    }
+
+    fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 }
