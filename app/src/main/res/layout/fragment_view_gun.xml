@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="#00BCD4"
+    android:background="@color/colorBackground"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:text="@string/text_manufacturer" />
 
-        <include layout="@layout/divider_view"/>
+        <include layout="@layout/divider_view" />
 
         <TextView
             android:id="@+id/textViewFragMfr"
@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:text="@string/text_model" />
 
-        <include layout="@layout/divider_view"/>
+        <include layout="@layout/divider_view" />
 
         <TextView
             android:id="@+id/textViewFragModel"
@@ -61,7 +61,7 @@
             android:layout_weight="1"
             android:text="@string/text_total_rounds" />
 
-        <include layout="@layout/divider_view"/>
+        <include layout="@layout/divider_view" />
 
         <TextView
             android:id="@+id/textViewFragTotalRounds"
