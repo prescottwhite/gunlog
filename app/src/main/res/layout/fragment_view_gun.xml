@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/colorBackground"
+    android:background="#FFFFFF"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -89,6 +89,7 @@
             android:id="@+id/buttonUpdateRounds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
             android:text="@string/button_update_rounds" />
     </LinearLayout>
 
@@ -97,13 +98,14 @@
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FF4D4D"
+        android:background="@color/colorDelete"
         android:text="@string/button_delete" />
 
     <Button
         android:id="@+id/buttonCloseFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
         android:text="@string/button_close" />
 
 </LinearLayout>
