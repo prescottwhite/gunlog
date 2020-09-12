@@ -2,8 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:animateLayoutChanges="true"
     android:background="#FFFFFF"
+    android:clickable="true"
+    android:focusable="true"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -98,6 +101,7 @@
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:background="@color/colorDelete"
         android:text="@string/button_delete" />
 
