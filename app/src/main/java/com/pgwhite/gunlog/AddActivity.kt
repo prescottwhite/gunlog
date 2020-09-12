@@ -3,6 +3,7 @@ package com.pgwhite.gunlog
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 
@@ -26,9 +27,23 @@ class AddActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.buttonSave)
         button.setOnClickListener {
-            val gun = Gun(0, editMfrView.text.toString(), editModelView.text.toString(), editTotalRoundsView.text.toString().toInt())
-            gunViewModel.insert(gun)
-            finish()
+            var roundsInt = -1
+            val mfrText = editMfrView.text.toString()
+            val modelText = editModelView.text.toString()
+            if (editTotalRoundsView.text.isNotEmpty()) {
+                roundsInt = editTotalRoundsView.text.toString().toInt()
+            }
+
+            if (mfrText.isEmpty() || modelText.isEmpty() || roundsInt == -1) {
+                Toast.makeText(this, R.string.toast_missing_fields, Toast.LENGTH_SHORT).show()
+            }
+
+            else {
+                val gun = Gun(0, mfrText, modelText, roundsInt)
+                gunViewModel.insert(gun)
+                Toast.makeText(this, R.string.toast_added_gun, Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
     }
 
