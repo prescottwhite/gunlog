@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:animateLayoutChanges="true"
     android:background="#FFFFFF"
     android:clickable="true"
@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/text_manufacturer" />
+            android:text="@string/text_manufacturer"
+            android:textSize="@dimen/text_medium" />
 
         <include layout="@layout/divider_view" />
 
@@ -28,7 +29,8 @@
             android:id="@+id/textViewFragMfr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp" />
+            android:textColor="@color/colorTextDark"
+            android:textSize="@dimen/text_large" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,7 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/text_model" />
+            android:text="@string/text_model"
+            android:textSize="@dimen/text_medium" />
 
         <include layout="@layout/divider_view" />
 
@@ -49,7 +52,8 @@
             android:id="@+id/textViewFragModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp" />
+            android:textColor="@color/colorTextDark"
+            android:textSize="@dimen/text_large" />
     </LinearLayout>
 
     <LinearLayout
@@ -62,7 +66,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/text_total_rounds" />
+            android:text="@string/text_total_rounds"
+            android:textSize="@dimen/text_medium" />
 
         <include layout="@layout/divider_view" />
 
@@ -70,12 +75,14 @@
             android:id="@+id/textViewFragTotalRounds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp" />
+            android:textColor="@color/colorTextDark"
+            android:textSize="@dimen/text_large" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
         android:orientation="horizontal">
 
         <EditText
@@ -98,10 +105,10 @@
 
     <Button
         android:id="@+id/buttonDeleteGun"
-        style="@style/Widget.AppCompat.Button.Small"
+        style="@android:style/Widget.Material.Light.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/small_padding"
         android:background="@color/colorDelete"
         android:text="@string/button_delete" />
 
@@ -109,6 +116,7 @@
         android:id="@+id/buttonCloseFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_padding"
         android:background="@color/colorPrimaryDark"
         android:text="@string/button_close" />
 
