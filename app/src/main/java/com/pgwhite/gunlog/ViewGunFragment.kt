@@ -85,9 +85,31 @@ class ViewGunFragment : Fragment() {
         }
 
         buttonDeleteGun.setOnClickListener {
+            linearLayoutUpdateRounds.visibility = View.INVISIBLE
+            buttonCloseFragment.visibility = View.GONE
+
+            buttonDeleteGun.visibility = View.INVISIBLE
+            buttonDeleteYes.visibility = View.VISIBLE
+            buttonDeleteNo.visibility = View.VISIBLE
+
+            textViewDeleteConfirmation.visibility = View.VISIBLE
+        }
+
+        buttonDeleteYes.setOnClickListener {
             gunViewModel.delete(currentGun!!)
             it.hideKeyboard()
             activity?.onBackPressed()
+        }
+
+        buttonDeleteNo.setOnClickListener {
+            linearLayoutUpdateRounds.visibility = View.VISIBLE
+            buttonCloseFragment.visibility = View.VISIBLE
+
+            buttonDeleteGun.visibility = View.VISIBLE
+            buttonDeleteYes.visibility = View.INVISIBLE
+            buttonDeleteNo.visibility = View.INVISIBLE
+
+            textViewDeleteConfirmation.visibility = View.GONE
         }
     }
 

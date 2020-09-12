@@ -19,10 +19,11 @@
     // view guns
     <string name="button_save_title">Save</string>
     <string name="button_delete">Delete</string>
+    <string name="button_delete_yes">Yes</string>
+    <string name="button_delete_no">No</string>
+    <string name="text_delete_confirm">Delete this gun?</string>
     <string name="button_close">Close</string>
     <string name="button_update_rounds">Update</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button_hint_update_rounds"># rounds fired today?</string>
 
 </resources>
