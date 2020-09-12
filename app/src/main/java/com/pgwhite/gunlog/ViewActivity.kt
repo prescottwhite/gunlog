@@ -28,10 +28,6 @@ class ViewActivity : AppCompatActivity() {
             // Update the cached copy of the guns in the adapter.
             guns?.let { adapter.setGuns(it) }
         })
-
-        recyclerView.setOnClickListener {
-            openGunEntry(recyclerView)
-        }
     }
 
     fun openGunEntry(view : View) {
