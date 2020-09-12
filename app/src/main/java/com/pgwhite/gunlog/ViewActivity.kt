@@ -39,7 +39,7 @@ class ViewActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(R.anim.slide_in,
-                R.anim.fade_out)
+                                R.anim.fade_out, R.anim.slide_in, R.anim.slide_out)
             .add(R.id.constraintLayout, ViewGunFragment.newInstance(position, mfrString, modelString, roundsInt),"gunFragment")
             .addToBackStack("gunFragment")
             .commit()
