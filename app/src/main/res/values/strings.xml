@@ -10,6 +10,7 @@
     <string name="text_manufacturer">Manufacturer</string>
     <string name="text_model">Model</string>
     <string name="text_type_gun">Type</string>
+    <string name="text_recoil_spring">Contains recoil spring?</string>
     <string name="text_recoil_spring_lifespan">Recoil Spring Lifespan</string>
     <string name="text_total_rounds">Total Round Count</string>
     <string name="text_recoil_spring_rounds">Round Count on Recoil Spring</string>
