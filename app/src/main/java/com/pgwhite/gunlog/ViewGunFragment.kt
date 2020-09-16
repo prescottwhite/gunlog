@@ -52,9 +52,8 @@ class ViewGunFragment : Fragment() {
         textViewFragTotalRounds.text = currentGun!!.rounds_total.toString()
 
         if (currentGun!!.recoil_spring_bool) {
-            linearLayoutRecoilSpring.visibility = View.VISIBLE
+            showViews(listOf(linearLayoutRecoilSpring, linearLayoutResetRecoil))
             textViewFragRecoilRounds.text = currentGun!!.recoil_spring_rounds.toString()
-            linearLayoutResetRecoil.visibility = View.VISIBLE
         }
 
         buttonCloseFragment.setOnClickListener {
@@ -91,9 +90,8 @@ class ViewGunFragment : Fragment() {
 
         // resetting recoil spring
         buttonResetRecoil.setOnClickListener {
-            buttonResetRecoil.visibility = View.INVISIBLE
-            buttonResetRecoilYes.visibility = View.VISIBLE
-            buttonResetRecoilNo.visibility = View.VISIBLE
+            showViews(listOf(buttonResetRecoilYes, buttonResetRecoilNo))
+            hideViews(listOf(buttonResetRecoil, linearLayoutUpdateRounds, linearLayoutDelete, buttonCloseFragment))
         }
 
         buttonResetRecoilYes.setOnClickListener {
@@ -103,31 +101,23 @@ class ViewGunFragment : Fragment() {
 
             textViewFragRecoilRounds.text = currentGun!!.recoil_spring_rounds.toString()
 
-            buttonResetRecoil.visibility = View.VISIBLE
-            buttonResetRecoilYes.visibility = View.INVISIBLE
-            buttonResetRecoilNo.visibility = View.INVISIBLE
+            showViews(listOf(buttonResetRecoil, linearLayoutUpdateRounds, linearLayoutDelete, buttonCloseFragment))
+            hideViews(listOf(buttonResetRecoilYes, buttonResetRecoilNo))
         }
 
         buttonResetRecoilNo.setOnClickListener {
-            buttonResetRecoil.visibility = View.VISIBLE
-            buttonResetRecoilYes.visibility = View.INVISIBLE
-            buttonResetRecoilNo.visibility = View.INVISIBLE
+            showViews(listOf(buttonResetRecoil, linearLayoutUpdateRounds, linearLayoutDelete, buttonCloseFragment))
+            hideViews(listOf(buttonResetRecoilYes, buttonResetRecoilNo))
         }
 
         // deleting a gun
         buttonDeleteGun.setOnClickListener {
-            linearLayoutUpdateRounds.visibility = View.INVISIBLE
             if (currentGun!!.recoil_spring_bool) {
-                linearLayoutResetRecoil.visibility = View.GONE
+                goneViews(listOf(linearLayoutResetRecoil))
             }
-
-            buttonDeleteGun.visibility = View.INVISIBLE
-            buttonDeleteYes.visibility = View.VISIBLE
-            buttonDeleteNo.visibility = View.VISIBLE
-
-            buttonCloseFragment.visibility = View.GONE
-
-            textViewDeleteConfirmation.visibility = View.VISIBLE
+            showViews(listOf(buttonDeleteYes, buttonDeleteNo, textViewDeleteConfirmation))
+            hideViews(listOf(linearLayoutUpdateRounds, buttonDeleteGun))
+            goneViews(listOf(buttonCloseFragment))
         }
 
         buttonDeleteYes.setOnClickListener {
@@ -137,19 +127,13 @@ class ViewGunFragment : Fragment() {
         }
 
         buttonDeleteNo.setOnClickListener {
-            linearLayoutUpdateRounds.visibility = View.VISIBLE
-
+            showViews(listOf(linearLayoutUpdateRounds, buttonDeleteGun, buttonCloseFragment))
+            hideViews(listOf(buttonDeleteYes, buttonDeleteNo))
             if (currentGun!!.recoil_spring_bool) {
-                linearLayoutResetRecoil.visibility = View.VISIBLE
+                showViews(listOf(linearLayoutResetRecoil))
             }
 
-            buttonDeleteGun.visibility = View.VISIBLE
-            buttonDeleteYes.visibility = View.INVISIBLE
-            buttonDeleteNo.visibility = View.INVISIBLE
-
-            buttonCloseFragment.visibility = View.VISIBLE
-
-            textViewDeleteConfirmation.visibility = View.GONE
+            goneViews(listOf(textViewDeleteConfirmation))
         }
     }
 
@@ -175,5 +159,23 @@ class ViewGunFragment : Fragment() {
     fun View.hideKeyboard() {
         val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(windowToken, 0)
+    }
+
+    fun showViews(views: List<View>) {
+        for (i in views) {
+            i.visibility = View.VISIBLE
+        }
+    }
+
+    fun hideViews(views: List<View>) {
+        for (i in views) {
+            i.visibility = View.INVISIBLE
+        }
+    }
+
+    fun goneViews(views: List<View>) {
+        for (i in views) {
+            i.visibility = View.GONE
+        }
     }
 }
