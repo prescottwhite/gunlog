@@ -11,12 +11,13 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayoutManufacturer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textViewMfr"
+            android:id="@+id/textViewMfrFrag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -34,12 +35,13 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayoutModel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textViewModel"
+            android:id="@+id/textViewModelFrag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -57,6 +59,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayoutRoundCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -77,6 +80,68 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorTextDark"
             android:textSize="@dimen/text_large" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRecoilSpring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/big_padding"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textViewRecoil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/text_recoil_spring_rounds"
+            android:textSize="@dimen/text_medium" />
+
+        <include layout="@layout/divider_view" />
+
+        <TextView
+            android:id="@+id/textViewFragRecoilRounds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextDark"
+            android:textSize="@dimen/text_large" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutResetRecoil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/big_padding"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/buttonResetRecoilYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorReset"
+            android:text="@string/button_reset_recoil_confirm"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/buttonResetRecoil"
+            style="@android:style/Widget.Material.Light.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_padding"
+            android:background="@color/colorReset"
+            android:text="@string/button_reset_recoil_spring" />
+
+        <Button
+            android:id="@+id/buttonResetRecoilNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/button_cancel"
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout

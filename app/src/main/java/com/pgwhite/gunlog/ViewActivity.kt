@@ -32,15 +32,12 @@ class ViewActivity : AppCompatActivity() {
 
     fun openGunEntry(view : View) {
         val position = recyclerView.getChildAdapterPosition(view)
-        val mfrString = gunViewModel.allGuns.value?.get(position)?.mfr!!
-        val modelString = gunViewModel.allGuns.value?.get(position)?.model!!
-        val roundsInt = gunViewModel.allGuns.value?.get(position)?.rounds_total!!
 
         supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(R.anim.slide_in,
                                 R.anim.fade_out, R.anim.slide_in, R.anim.slide_out)
-            .add(R.id.constraintLayout, ViewGunFragment.newInstance(position, mfrString, modelString, roundsInt),"gunFragment")
+            .add(R.id.constraintLayout, ViewGunFragment.newInstance(position),"gunFragment")
             .addToBackStack("gunFragment")
             .commit()
     }

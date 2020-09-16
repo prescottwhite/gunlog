@@ -9,22 +9,26 @@
     // add new gun
     <string name="text_manufacturer">Manufacturer</string>
     <string name="text_model">Model</string>
-    <string name="text_type_gun">Type</string>
-    <string name="text_recoil_spring">Contains recoil spring?</string>
-    <string name="text_recoil_spring_lifespan">Recoil Spring Lifespan</string>
     <string name="text_total_rounds">Total Round Count</string>
+    <string name="text_recoil_spring">Contains recoil spring?</string>
     <string name="text_recoil_spring_rounds">Round Count on Recoil Spring</string>
+    <string name="button_save">Save</string>
     <string name="toast_missing_fields">Please fill out all fields</string>
     <string name="toast_added_gun">New gun saved</string>
 
     // view guns
-    <string name="button_save_title">Save</string>
+    <string name="button_reset_recoil_spring">Reset Recoil Spring</string>
+    <string name="button_reset_recoil_confirm">Reset</string>
+    <string name="button_cancel">Cancel</string>
+
+    <string name="button_hint_update_rounds"># rounds fired today?</string>
+    <string name="button_update_rounds">Update</string>
+
     <string name="button_delete">Delete</string>
     <string name="button_delete_yes">Yes</string>
     <string name="button_delete_no">No</string>
     <string name="text_delete_confirm">Delete this gun?</string>
+
     <string name="button_close">Close</string>
-    <string name="button_update_rounds">Update</string>
-    <string name="button_hint_update_rounds"># rounds fired today?</string>
 
 </resources>

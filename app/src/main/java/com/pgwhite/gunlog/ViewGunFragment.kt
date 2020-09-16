@@ -12,9 +12,6 @@ import kotlinx.android.synthetic.main.fragment_view_gun.*
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_POS = "param1"
-private const val ARG_MFR = "param2"
-private const val ARG_MODEL = "param3"
-private const val ARG_TOTAL_ROUNDS = "param4"
 
 /**
  * A simple [Fragment] subclass.
@@ -27,17 +24,11 @@ class ViewGunFragment : Fragment() {
     private var currentGun: Gun? = null
 
     private var pos: Int? = null
-    private var mfr: String? = null
-    private var model: String? = null
-    private var totalRounds: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             pos = it.getInt(ARG_POS)
-            mfr = it.getString(ARG_MFR)
-            model = it.getString(ARG_MODEL)
-            totalRounds = it.getInt(ARG_TOTAL_ROUNDS)
         }
 
         gunViewModel = (activity as ViewActivity).getViewModelInstance()
@@ -56,9 +47,15 @@ class ViewGunFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        textViewFragMfr.text = this.mfr
-        textViewFragModel.text = this.model
-        textViewFragTotalRounds.text = this.totalRounds.toString()
+        textViewFragMfr.text = currentGun!!.mfr
+        textViewFragModel.text = currentGun!!.model
+        textViewFragTotalRounds.text = currentGun!!.rounds_total.toString()
+
+        if (currentGun!!.recoil_spring_bool) {
+            linearLayoutRecoilSpring.visibility = View.VISIBLE
+            textViewFragRecoilRounds.text = currentGun!!.recoil_spring_rounds.toString()
+            linearLayoutResetRecoil.visibility = View.VISIBLE
+        }
 
         buttonCloseFragment.setOnClickListener {
             it.hideKeyboard()
@@ -67,15 +64,23 @@ class ViewGunFragment : Fragment() {
 
         buttonUpdateRounds.setOnClickListener {
             try {
-                var newRoundCount: Int = editTextNewRoundCount.text.toString().toInt()
+                val newRoundCount: Int = editTextNewRoundCount.text.toString().toInt()
+                var newRecoilCount: Int = 0
+
                 if (newRoundCount > 0) {
-                    val updateGun = Gun(currentGun!!.id, currentGun!!.mfr, currentGun!!.model, currentGun!!.rounds_total + newRoundCount)
+                    // check if gun has recoil spring
+                    if (currentGun!!.recoil_spring_bool) {
+                        newRecoilCount = currentGun!!.recoil_spring_rounds + newRoundCount
+                    }
+
+                    val updateGun = Gun(currentGun!!.id, currentGun!!.mfr, currentGun!!.model, currentGun!!.rounds_total + newRoundCount, currentGun!!.recoil_spring_bool, newRecoilCount)
                     gunViewModel.update(updateGun)
                     currentGun = updateGun
 
                     textViewFragMfr.text = currentGun!!.mfr
                     textViewFragModel.text = currentGun!!.model
                     textViewFragTotalRounds.text = currentGun!!.rounds_total.toString()
+                    textViewFragRecoilRounds.text = currentGun!!.recoil_spring_rounds.toString()
                 }
                 editTextNewRoundCount.text = null
                 it.hideKeyboard()
@@ -84,13 +89,40 @@ class ViewGunFragment : Fragment() {
             }
         }
 
+        // resetting recoil spring
+        buttonResetRecoil.setOnClickListener {
+            buttonResetRecoil.visibility = View.INVISIBLE
+            buttonResetRecoilYes.visibility = View.VISIBLE
+            buttonResetRecoilNo.visibility = View.VISIBLE
+        }
+
+        buttonResetRecoilYes.setOnClickListener {
+            currentGun!!.recoil_spring_rounds = 0
+            textViewFragRecoilRounds.text = currentGun!!.recoil_spring_rounds.toString()
+
+            buttonResetRecoil.visibility = View.VISIBLE
+            buttonResetRecoilYes.visibility = View.INVISIBLE
+            buttonResetRecoilNo.visibility = View.INVISIBLE
+        }
+
+        buttonResetRecoilNo.setOnClickListener {
+            buttonResetRecoil.visibility = View.VISIBLE
+            buttonResetRecoilYes.visibility = View.INVISIBLE
+            buttonResetRecoilNo.visibility = View.INVISIBLE
+        }
+
+        // deleting a gun
         buttonDeleteGun.setOnClickListener {
             linearLayoutUpdateRounds.visibility = View.INVISIBLE
-            buttonCloseFragment.visibility = View.GONE
+            if (currentGun!!.recoil_spring_bool) {
+                linearLayoutResetRecoil.visibility = View.GONE
+            }
 
             buttonDeleteGun.visibility = View.INVISIBLE
             buttonDeleteYes.visibility = View.VISIBLE
             buttonDeleteNo.visibility = View.VISIBLE
+
+            buttonCloseFragment.visibility = View.GONE
 
             textViewDeleteConfirmation.visibility = View.VISIBLE
         }
@@ -103,11 +135,16 @@ class ViewGunFragment : Fragment() {
 
         buttonDeleteNo.setOnClickListener {
             linearLayoutUpdateRounds.visibility = View.VISIBLE
-            buttonCloseFragment.visibility = View.VISIBLE
+
+            if (currentGun!!.recoil_spring_bool) {
+                linearLayoutResetRecoil.visibility = View.VISIBLE
+            }
 
             buttonDeleteGun.visibility = View.VISIBLE
             buttonDeleteYes.visibility = View.INVISIBLE
             buttonDeleteNo.visibility = View.INVISIBLE
+
+            buttonCloseFragment.visibility = View.VISIBLE
 
             textViewDeleteConfirmation.visibility = View.GONE
         }
@@ -124,13 +161,10 @@ class ViewGunFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(pos: Int, mfr: String, model: String, totalRounds: Int) =
+        fun newInstance(pos: Int) =
             ViewGunFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_POS, pos)
-                    putString(ARG_MFR, mfr)
-                    putString(ARG_MODEL, model)
-                    putInt(ARG_TOTAL_ROUNDS, totalRounds)
                 }
             }
     }

@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#7ca453</color>
     <color name="colorAccent">#e0ffb1</color>
     <color name="colorDelete">#D84949</color>
+    <color name="colorReset">#F7FF9D</color>
 
     <color name="colorTextDark">#000000</color>
 </resources>
