@@ -97,7 +97,10 @@ class ViewGunFragment : Fragment() {
         }
 
         buttonResetRecoilYes.setOnClickListener {
-            currentGun!!.recoil_spring_rounds = 0
+            val updateGun = Gun(currentGun!!.id, currentGun!!.mfr, currentGun!!.model, currentGun!!.rounds_total, currentGun!!.recoil_spring_bool, 0)
+            gunViewModel.update(updateGun)
+            currentGun = updateGun
+
             textViewFragRecoilRounds.text = currentGun!!.recoil_spring_rounds.toString()
 
             buttonResetRecoil.visibility = View.VISIBLE
