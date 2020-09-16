@@ -112,12 +112,11 @@ class ViewGunFragment : Fragment() {
 
         // deleting a gun
         buttonDeleteGun.setOnClickListener {
-            if (currentGun!!.recoil_spring_bool) {
-                goneViews(listOf(linearLayoutResetRecoil))
-            }
             showViews(listOf(buttonDeleteYes, buttonDeleteNo, textViewDeleteConfirmation))
-            hideViews(listOf(linearLayoutUpdateRounds, buttonDeleteGun))
-            goneViews(listOf(buttonCloseFragment))
+            hideViews(listOf(linearLayoutUpdateRounds, buttonDeleteGun, buttonCloseFragment))
+            if (currentGun!!.recoil_spring_bool) {
+                hideViews(listOf(linearLayoutResetRecoil))
+            }
         }
 
         buttonDeleteYes.setOnClickListener {
@@ -128,12 +127,10 @@ class ViewGunFragment : Fragment() {
 
         buttonDeleteNo.setOnClickListener {
             showViews(listOf(linearLayoutUpdateRounds, buttonDeleteGun, buttonCloseFragment))
-            hideViews(listOf(buttonDeleteYes, buttonDeleteNo))
+            hideViews(listOf(buttonDeleteYes, buttonDeleteNo, textViewDeleteConfirmation))
             if (currentGun!!.recoil_spring_bool) {
                 showViews(listOf(linearLayoutResetRecoil))
             }
-
-            goneViews(listOf(textViewDeleteConfirmation))
         }
     }
 
